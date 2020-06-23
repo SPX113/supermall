@@ -1,10 +1,16 @@
 <template>
-    <h2>分类</h2>
+    <nav-bar class="category-bar">
+        <div slot="center">分类</div>
+    </nav-bar>
 </template>
 
 <script>
+  import NavBar from "components/common/navbar/NavBar";
   export default {
-    name: "Category"
+    name: "Category",
+    components:{
+        NavBar
+    }
   }
 </script>
 
