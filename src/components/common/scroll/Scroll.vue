@@ -25,6 +25,11 @@
         default: false
       }
     },
+    methods:{
+      refresh(){
+        this.scroll && this.scroll.refresh();
+      }
+    },
     mounted() {
       //1.创建BScroll对象
       this.scroll = new BScroll(this.$refs.wrapper,{
@@ -34,13 +39,19 @@
         mouseWheel: true
       })
       //2.监听滚动位置
-      this.scroll.on('scroll', possition =>{
-        this.$emit('scroll',possition)
-      })
+      if (this.probeType === 2 || this.probeType ===3){
+        this.scroll.on('scroll', possition =>{
+          this.$emit('scroll',possition)
+        })
+      }
       //3.监听上拉事件
-      this.scroll.on('pullingUp',() => {
-        this.$emit('pullingUp')
-      })
+      if (this.pullUpLoad)
+      {
+        this.scroll.on('pullingUp',() => {
+          this.$emit('pullingUp')
+        })
+      }
+
     }
   }
 </script>
