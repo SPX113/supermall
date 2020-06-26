@@ -26,8 +26,9 @@
     },
     data() {
       return {
+        isLoop : true,
         swiperOption: {
-          loop: true,
+          loop: this.topImages.length > 1,
           autoplay: {
             delay: 4000,
             disableOnInteraction: false
@@ -56,13 +57,13 @@
     max-width: 100%;
     max-height: 100%;
   }
-
-</style>
-
-<style>
-.swiper-pagination-bullet{
-  background-color: white;
-  outline:0 none !important; blr:expression(this.onFocus=this.blur());
-}
+  >>> .swiper-pagination-bullet {
+    background-color: black;
+    outline:0 none !important; blr:expression(this.onFocus=this.blur());
+  }
+  >>> .swiper-pagination-bullet-active {
+    background-color: orangered;
+    outline:0 none !important; blr:expression(this.onFocus=this.blur());
+  }
 
 </style>

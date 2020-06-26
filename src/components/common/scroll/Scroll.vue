@@ -36,7 +36,7 @@
         click: true,
         probeType: this.probeType,
         pullUpLoad: this.pullUpLoad,
-        mouseWheel: true
+        // mouseWheel: true
       })
       //2.监听滚动位置
       if (this.probeType === 2 || this.probeType ===3){
