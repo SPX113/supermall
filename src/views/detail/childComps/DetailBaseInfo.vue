@@ -33,11 +33,11 @@
 
 <style scoped>
   .base-info{
-
+    border-bottom: 5px solid #f2f5f8;
   }
   .title{
-    font-size: 1.2rem;
-    text-indent: 0.8rem;
+    font-size: 1rem;
+    text-indent: 0.5rem;
     padding: 0.5rem;
   }
   .new-price{
@@ -64,7 +64,7 @@
     color: #999999;
     font-size: 0.8rem;
   }
-  .servicesItem{
+  .columns span{
     flex: 1;
   }
   .right{
@@ -73,18 +73,21 @@
   .services{
     display: flex;
     padding: 0.7rem;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     overflow: hidden;
+    text-align: center;
   }
-  .services img{
-    width: 0.9rem;
-    height: 0.9rem;
+  .servicesItem{
+    flex: 1;
   }
-  .services span{
-   flex: 1;
-  }
-  .services span:last-child{
+  .servicesItem:first-child{
+    text-align: left;
+    }
+  .servicesItem:last-child{
     text-align: right;
   }
-
+  .services img{
+    width: 0.7rem;
+    height: 0.7rem;
+  }
 </style>
