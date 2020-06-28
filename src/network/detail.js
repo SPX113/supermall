@@ -9,6 +9,14 @@ export function getDetail(iid){
   })
 }
 
+export function getRecommend() {
+  return request({
+    url: '/recommend'
+  })
+
+}
+
+
 export class GoodsInfo{
   constructor(itemInfo,columns,services) {
     this.title = itemInfo.title
@@ -30,5 +38,12 @@ export  class Shop {
     this.cells = shopInfo.cSells;
     this.scores = shopInfo.score;
     this.goodsCount = shopInfo.cGoods;
+  }
+}
+
+export class GoodsParam {
+  constructor(info,rule) {
+    this.info = info.set;
+    this.size = rule.tables[0];
   }
 }

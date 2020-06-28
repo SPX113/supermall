@@ -6,8 +6,6 @@
       </a>
     </swiper-slide>
     <div class="swiper-pagination" slot="pagination"></div>
-    <div class="swiper-button-prev" slot="button-prev"></div>  <!-- 箭头左 -->
-    <div class="swiper-button-next" slot="button-next"></div>  <!-- 箭头右 -->
   </swiper>
 </template>
 
@@ -70,14 +68,6 @@
     height: -webkit-fill-available;
     max-width: 100%;
     max-height: 100%;
-  }
-  .swiper-button-prev{
-
-    color: rgba(0,0,0,0.4);
-
-  }
-  .swiper-button-next {
-    color: rgba(0,0,0,0.4);
   }
   >>>.swiper-pagination-bullet{
     background-color: white;

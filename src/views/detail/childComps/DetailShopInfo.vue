@@ -7,7 +7,7 @@
     <div class="detail">
       <div class="left">
         <div class="left-item">
-          <p class="num">{{shopInfo.cells}}万</p>
+          <p class="num">{{cell}}万</p>
           <p >总销量</p>
         </div>
         <div class="left-item">
@@ -20,6 +20,8 @@
           <span class="miaoshu" :class="{isBetter :shopInfo.scores[index].isBetter }">{{item.score}}</span> </p>
       </div>
     </div>
+    <div class="jdgg">进店逛逛</div>
+
   </div>
 </template>
 
@@ -32,6 +34,11 @@
         default(){
           return {}
         }
+      }
+    },
+    computed:{
+      cell(){
+        return (this.shopInfo.cells/10000).toFixed(1)
       }
     }
   }
@@ -57,17 +64,17 @@
     text-align: center;
     font-size: 0.9rem;
     height: 6rem;
-    border-bottom: #f2f5f8 solid 5px;
   }
   .left{
     display: flex;
     width: 50%;
-    border-right: #999999 solid 1px;
+    border-right: #f2f5f8 solid 2px;
+    padding-left: 0.7rem;
   }
   .right{
     width: 50%;
     text-align: justify;
-    padding-left: 12.5%;
+    padding-left: 10%;
   }
   .left-item{
     flex: 1;
@@ -87,5 +94,12 @@
   }
   .isBetter{
     color: red;
+  }
+  .jdgg{
+    border-bottom: #f2f5f8 solid 5px;
+    color: #999999;
+    text-align: center;
+    padding-bottom: 1rem;
+    font-size: 0.8rem;
   }
 </style>
