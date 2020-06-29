@@ -23,14 +23,21 @@
     computed:{
       showImage(){
         return  this.goodsItem.image || this.goodsItem.show.img
+      },
+      id(){
+        return this.goodsItem.iid || this.goodsItem.shop_id
       }
     },
     methods:{
       imageLoad(){
-        this.$bus.$emit('itemImageLoad')
+        if(this.$route.path.indexOf('/home') !== -1){
+          this.$bus.$emit('itemImageLoad')
+        }else if(this.$route.path.indexOf('/detail') !== -1){
+          this.$bus.$emit('imageOnload')
+        }
       },
       itemClick(){
-        this.$router.push('/detail/'+ this.goodsItem.iid)
+        this.$router.push('/detail/'+ this.id)
       }
     }
   }

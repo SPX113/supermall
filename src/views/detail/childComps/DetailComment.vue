@@ -1,22 +1,25 @@
 <template>
-  <div v-if="Object.keys(goodsComment).length !== 0" class="detail-comment">
-    <div class="comment-header">
-      <div class="header-title">用户评价</div>
-      <div class="header-more">更多</div>
+  <div>
+    <div v-if="Object.keys(goodsComment).length !== 0" class="detail-comment">
+      <div class="comment-header">
+        <div class="header-title">用户评价</div>
+        <div class="header-more">更多</div>
+      </div>
+      <div class="comment-user">
+        <img :src="goodsComment.user.avatar" >
+        <span class="username">{{goodsComment.user.uname}}</span>
+      </div>
+      <div class="comment">
+        {{goodsComment.content}}
+      </div>
+      <div class="comment-detail">
+        <span>{{this.goodsComment.created|showDate}}</span><span>{{goodsComment.style}}</span>
+      </div>
+      <div class="image" v-if="goodsComment.images">
+        <img v-for="(item,index) in goodsComment.images" :src="item" :key="index" @click="open(item)">
+      </div>
     </div>
-    <div class="comment-user">
-      <img :src="goodsComment.user.avatar" >
-      <span class="username">{{goodsComment.user.uname}}</span>
-    </div>
-    <div class="comment">
-      {{goodsComment.content}}
-    </div>
-    <div class="comment-detail">
-      <span>{{this.goodsComment.created|showDate}}</span><span>{{goodsComment.style}}</span>
-    </div>
-    <div class="image" v-if="goodsComment.images">
-      <img v-for="(item,index) in goodsComment.images" :src="item" :key="index" @click="open(item)">
-    </div>
+    <div v-else class="blank">暂无人评论</div>
   </div>
 </template>
 
@@ -93,10 +96,19 @@
     border-bottom: #f2f5f8 3px solid;
   }
   .image img{
-    height: 7rem
+    height: 7rem;
+    width: 6rem;
+    margin-right: 0.7rem;
   }
   .detail-comment{
     padding-bottom: 1rem;
+    border-bottom: #f2f5f8 5px solid;
+  }
+  .blank{
+    width: 100%;
+    text-align: center;
+    padding: 2rem 0 2rem ;
+    font-size: 1rem;
     border-bottom: #f2f5f8 5px solid;
   }
 </style>
