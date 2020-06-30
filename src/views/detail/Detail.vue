@@ -12,7 +12,8 @@
         <good-list :goods="goodsRecommend"  ref="recommend"/>
       </div>
     </scroll>
-    <detail-bottom-bar></detail-bottom-bar>
+    <detail-bottom-bar @addCart="addToCart" />
+    <back-top @click.native="backClick" v-show="isShowBackTop"/>
   </div>
 </template>
 
@@ -32,12 +33,15 @@
   import {getDetail,GoodsInfo,Shop,GoodsParam,getRecommend} from "network/detail";
 
   import {debounce} from "common/utils";
+  import {backTopMixin} from "common/mixin";
 
   export default {
     name: "Detail",
     components:{
-      DetailNavBar,DetailSwiper,DetailBaseInfo,Scroll,DetailShopInfo,DetailGoodsInfo,DetailParam,DetailComment,GoodList,DetailBottomBar
+      DetailNavBar,DetailSwiper,DetailBaseInfo,Scroll,DetailShopInfo,DetailGoodsInfo,DetailParam,
+      DetailComment,GoodList,DetailBottomBar
     },
+    mixins:[backTopMixin],
     data(){
       return{
         iid : null,
@@ -57,6 +61,9 @@
         this.$refs.scroll.scroll.scrollTo(0, -this.themeTopY[index])
       },
       title(position) {
+        //backTop是否显示
+        this.listenShow(position)
+        //标题与内容的对应
           const positionY = -position.y
           if(positionY >= 0 && positionY < this.themeTopY[1] &&  this.$refs.nav._data.currentIndex !== 0){
             this.$refs.nav._data.currentIndex = 0
@@ -67,6 +74,16 @@
           }else if(positionY >= this.themeTopY[3] && this.$refs.nav._data.currentIndex !== 3){
             this.$refs.nav._data.currentIndex = 3
           }
+      },
+      addToCart(){
+        const product = {}
+        product.image = this.topImage[0]
+        product.title = this.goodsInfo.title
+        product.desc = this.goodsInfo.desc
+        product.price = this.goodsInfo.realPrice
+        product.iid = this.iid
+        //放到store里面
+        this.$store.dispatch('addCart',product)
       }
     },
     created() {

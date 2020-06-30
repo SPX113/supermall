@@ -27,18 +27,19 @@
   import TabControl from "components/content/tabControl/TabControl";
   import GoodList from "components/content/goods/GoodList";
   import Scroll from "components/common/scroll/Scroll";
-  import BackTop from "components/common/backTop/BackTop";
 
   import {getHomeMultidata,getHomeGoods} from "network/home";
   import {debounce} from "common/utils";
+  import {backTopMixin} from "common/mixin";
 
 
   export default {
     name: "Home",
     components:{
         NavBar, HomeSwiper, HomeRecommendView, FeatureView,
-        TabControl, GoodList, Scroll, BackTop
+        TabControl, GoodList, Scroll
       },
+      mixins:[backTopMixin],
       data(){
         return{
             banners:null,
@@ -49,7 +50,6 @@
                 'sell':{page: 0,list:[],y:0}
             },
             currentType:'pop',
-            isShowBackTop : false,
             tabOffsetTop: 0,
             isTabShow : false,
             saveY : 0
@@ -113,12 +113,9 @@
             this.$refs.scroll.scroll.refresh()
             this.$refs.scroll.scroll.scrollTo(0,this.goods[this.currentType].y)
         },
-        backClick(){
-            this.$refs.scroll.scroll.scrollTo(0,0,1000)
-        },
         scroll(possition){
             //1.判断BackTop是否显示
-            this.isShowBackTop = possition.y < -1200
+            this.listenShow(possition)
             //2.决定tabControl是否吸顶
             this.isTabShow = (-possition.y) > this.tabOffsetTop
 
