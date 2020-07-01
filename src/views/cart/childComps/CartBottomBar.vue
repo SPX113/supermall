@@ -1,7 +1,7 @@
 <template>
   <div class="bottom-bar">
     <div class="checkAll">
-      <check-button/>
+      <check-button @click.native="allBuy" :ischecked="isSelectAll" />
       <span>全选</span>
     </div>
     <div class="price">
@@ -30,6 +30,20 @@
       },
       checkLength(){
         return this.$store.state.cartList.filter(item => item.checked).length
+      },
+      isSelectAll(){
+        // return !(this.$store.state.cartList.filter(item => !item.checked).length)
+        // return this.$store.state.cartList.length !== 0 && !this.$store.state.cartList.find(item => !item.checked)
+        return this.$store.state.cartList.length !== 0 && this.$store.state.cartList.every(item => item.checked)
+      }
+    },
+    methods:{
+      allBuy(){
+        if(this.isSelectAll){
+          this.$store.commit('allBuy')
+        }else{
+          this.$store.commit('allBuy2')
+        }
       }
     }
   }

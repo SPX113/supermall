@@ -60,7 +60,7 @@
 <style scoped>
   .banners{
     /*height: 194px;*/
-    height: 35vh;
+    height: 200px;
     width: 100%;
   }
   .banners img{

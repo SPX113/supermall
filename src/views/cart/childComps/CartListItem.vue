@@ -30,11 +30,12 @@
         default(){
           return {}
         }
-      }
+      },
+      index:Number
     },
     methods:{
       checkClick(){
-        this.itemInfo.checked = !this.itemInfo.checked
+        this.$store.commit('buyChecked',this.index)
       }
     }
   }

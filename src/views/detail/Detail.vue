@@ -35,6 +35,8 @@
   import {debounce} from "common/utils";
   import {backTopMixin} from "common/mixin";
 
+
+
   export default {
     name: "Detail",
     components:{
@@ -53,7 +55,7 @@
         goodsComment:{},
         goodsRecommend:[],
         themeTopY: [],
-        isActive: 0
+        isActive: 0,
       }
     },
     methods: {
@@ -83,7 +85,9 @@
         product.price = this.goodsInfo.realPrice
         product.iid = this.iid
         //放到store里面
-        this.$store.dispatch('addCart',product)
+        this.$store.dispatch('addCart',product).then(res =>{
+          this.$toast.show(res)
+        })
       }
     },
     created() {
