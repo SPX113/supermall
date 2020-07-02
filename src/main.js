@@ -8,6 +8,18 @@ import toast from  'components/common/toast'
 import FastClick from 'fastclick'
 import VueLazyload from "vue-lazyload"
 
+import '@/assets/icon/iconfont.css'
+
+//vant插件引入
+import { Grid, GridItem } from 'vant';
+import { Image as VanImage } from 'vant';
+import { Cell, CellGroup } from 'vant';
+
+Vue.use(Cell);
+Vue.use(CellGroup);
+Vue.use(VanImage);
+Vue.use(Grid);
+Vue.use(GridItem);
 
 
 Vue.config.productionTip = false

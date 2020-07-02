@@ -26,7 +26,7 @@
           return item.checked
         }).reduce((preValue,item) => {
           return preValue + item.price * item.count
-        },0) + '元'
+        },0).toFixed(2) + '元'
       },
       checkLength(){
         return this.$store.state.cartList.filter(item => item.checked).length

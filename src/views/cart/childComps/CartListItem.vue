@@ -11,7 +11,15 @@
       <div class="item-desc">{{itemInfo.desc}}</div>
       <div class="info-bottom">
         <div class="item-price left">￥{{itemInfo.price}}</div>
-        <div class="item-count right">x{{itemInfo.count}}</div>
+        <div class="item-count right">
+          <table>
+            <tr>
+              <td @click="minus">-</td>
+              <td style="width: 20px">{{itemInfo.count}}</td>
+              <td @click="add">+</td>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
   </div>
@@ -36,6 +44,12 @@
     methods:{
       checkClick(){
         this.$store.commit('buyChecked',this.index)
+      },
+      minus(){
+        this.$store.commit('minus',this.index)
+      },
+      add(){
+        this.$store.commit('add',this.index)
       }
     }
   }
@@ -46,7 +60,7 @@
     display: flex;
     border-bottom: #f2f5f8 2px solid;
     padding: 0.5rem 0;
-    height: 6rem;
+    height: 6.5rem;
   }
   .item-selector{
     width: 15%;
@@ -90,5 +104,14 @@
   }
    .left{
     color: orangered;
+  }
+   table{
+     border-collapse: collapse;
+   }
+  .item-count td{
+    text-align: center;
+    border: #999999 1px solid;
+
+    width: 20px;
   }
 </style>

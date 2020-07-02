@@ -6,6 +6,7 @@ const Category = () => import('views/category/Category')
 const Cart = () => import('views/cart/Cart')
 const Profile = () => import('views/profile/Profile')
 const Detail = () => import('views/detail/Detail')
+const Classification = () => import('views/classification/Classification')
 
 // 1.安装插件
 Vue.use(VueRouter)
@@ -35,6 +36,10 @@ const routes = [
   {
     path: '/detail/:iid',
     component: Detail
+  },
+  {
+    path: '/class/:maitKey',
+    component: Classification
   }
 ]
 const router = new VueRouter({
